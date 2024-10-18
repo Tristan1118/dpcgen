@@ -1,0 +1,15 @@
+{
+    "File upload": {
+        "tasks": [
+            {
+                "title": "Test EICAR",
+                "instructions": [
+                    "EICARSTRING"
+                ]
+            },
+            {
+                "title": "Test upload size"
+            }
+        ]
+    }
+}
