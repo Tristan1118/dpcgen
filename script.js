@@ -718,7 +718,20 @@ TODO:
 * import / export
 */
 
-
+// Future: delete project
+function confirmDelete() {
+    // Show a confirmation dialog
+    const confirmed = confirm("Are you sure you want to delete this? This action cannot be undone.");
+    
+    // If the user confirms, proceed with the delete action
+    if (confirmed) {
+        // Perform the delete action here, such as making an API call or removing an element
+        alert("Item deleted!"); // Placeholder for delete action
+    } else {
+        // User canceled the action
+        alert("Delete action canceled.");
+    }
+}
 
 
 
