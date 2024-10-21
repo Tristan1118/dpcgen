@@ -40,6 +40,8 @@ const readAllTestCaseData = () => {
 
 // Function to populate the dropdown with test case titles
 const populateTestCaseDropdown = (testCases) => {
+  console.log("Calling populateTestCaseDropdown");
+  console.log("Received test cases: " + JSON.stringify(testCases));
   const dropdown = document.getElementById('testCaseDropdown');
   for (const title in testCases) {
     if (testCases.hasOwnProperty(title)) {

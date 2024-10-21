@@ -1,30 +1,27 @@
 // background.js
-const loadTestCaseData = async () => {
+// Function to parse and handle the JSON data from files
+function loadTestCaseData(fileDataArray) {
   const testCaseData = {};
-
-  // List of your JSON file names
-  const fileNames = [
-    'testcases/fileupload.json',
-    'testcases/owasp10.json'
-    // Add more filenames as needed
-  ];
-
-  // Fetch and parse each JSON file
-  for (const fileName of fileNames) {
-    const response = await fetch(browser.runtime.getURL(fileName));
-    if (response.ok) {
-      const jsonData = await response.json();
-      Object.assign(testCaseData, jsonData); // Merge the parsed data into the testCaseData object
-    } else {
-      console.error(`Failed to load ${fileName}: ${response.statusText}`);
-    }
-  }
-
-  // Save the combined test cases to browser.storage.local
+  fileDataArray.forEach(file => {
+      try {
+          const jsonData = JSON.parse(file.content);
+          console.log(`Loaded data from ${file.name}:`, jsonData);
+          // Add further processing of the JSON data here
+          Object.assign(testCaseData, jsonData); // Merge the parsed data into testCaseData
+          console.log("Updated testCaseData: " + JSON.stringify(testCaseData));
+      } catch (error) {
+          console.error(`Error parsing ${file.name}:`, error);
+      }
+  });
   browser.storage.local.set({ testCaseData }, () => {
     console.log("Test cases loaded and saved to browser.storage.local:", testCaseData);
   });
-};
+}
 
-// Call loadTestCaseData when the background script starts
-loadTestCaseData();
+// Listen for messages from options.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === 'loadTestCaseData') {
+      loadTestCaseData(message.files);
+  }
+});
+
