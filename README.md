@@ -1,5 +1,6 @@
 # dpcgen
 Dynamic pentest checklist generator
+
 ![Logo](screenshots/logo.png)
 
 ## Installation as unsigned extension
