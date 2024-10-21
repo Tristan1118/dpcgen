@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen Testing Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-program">
+        <div class="program-selector">
+            <label for="programSelect">Select Program:</label>
+            <select id="programSelect">
+            </select>
+        </div>
+        <div class="program-importexport">
+            <label for="import">Import:</label>
+            <input type="file" id="import" name="importbutton" accept=".json">
+            <button id="export">Export project</button>
+        </div>
+        <div class="program-delete">
+            <button id="deleteproject" class="delete-button">Delete project</button>
+        </div>
+    </div>
+
+    <div class="container-checklist">
+        <!-- Test Cases (Left Column) -->
+        <div class="test-cases" id="testCases">
+            <h3>Test Cases</h3>
+        </div>
+    
+        <!-- Checklist (Middle Column) -->
+        <div class="checklist" id="checklistSection">
+            <h3>Select a test case</h3>
+            <div id="checklistItems"></div>
+        </div>
+    
+        <!-- Notes Section (Right Column) -->
+        <div class="general-notes">
+            <h3>
+                General Notes
+            </h3>
+            <div class="tabs">
+                <button class="tablinks" data-tab="tab1" id="program-tablink">Program Notes</button>
+                <button class="tablinks" data-tab="tab2" id="domain-tablink">Domain Notes</button>
+            </div>
+        
+            <div class="tabcontainer">
+                <div id="tab1" class="tabcontent">
+                    <textarea id="notes-programNotes" style="resize: vertical"; placeholder="Write your notes here..."></textarea>
+                </div>
+        
+                <div id="tab2" class="tabcontent">
+                    <textarea id="notes-domainNotes" style="resize: vertical"; placeholder="Write your notes here..."></textarea>
+                </div>
+            </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="dependencies/crypto-js.min.js"></script>
+</body>

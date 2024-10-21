@@ -1,0 +1,314 @@
+* {
+    box-sizing: border-box;
+}
+
+/* General Settings */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e; /* Dark background */
+    color: #e0e0e0;            /* Light text for contrast */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: #4db8ff;            /* Light blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #82cfff;            /* Lighter blue on hover */
+    text-decoration: underline;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;            /* Bright white for headers */
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+/* Navigation */
+nav {
+    background-color: #333;    /* Slightly lighter background for navigation */
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 15px;
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffffff;            /* White when hovering over navigation links */
+}
+
+/* Buttons */
+button {
+    background-color: #4db8ff; /* Light blue buttons */
+    color: #1e1e1e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #82cfff; /* Lighter blue on hover */
+}
+
+/* Forms */
+input[type="text"], input[type="email"], textarea {
+    background-color: #2b2b2b; /* Dark background for input fields */
+    color: #e0e0e0;
+    border: 1px solid #555;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #4db8ff;     /* Highlight border on focus */
+    outline: none;
+}
+
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+/* Top section (program) */
+.container-program {
+    display: flex;
+    height: auto;
+    min-height: 10vh;
+    border-bottom: 2px solid black;
+}
+
+.program-selector, .program-importexport, .program-delete{
+    padding: 20px;
+}
+
+.program-selector {
+    width: 25%;
+    border-right: 1px solid #ccc;
+}
+
+.program-importexport {
+    width: 50%;
+    border-right: 1px solid #ccc;
+}
+
+.program-delete {
+    width: 25%;
+}
+
+.delete-button {
+    background-color: red; /* Red background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer; /* Change cursor to pointer */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+.delete-button:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+
+/* Center section */
+.container-checklist {
+    display: flex;
+    height: 100vh;
+}
+
+.test-cases, .checklist, .general-notes {
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling for each section */
+    /*scrollbar-width: thin;*/
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
+}
+
+.test-cases {
+    flex: 0 0 25%;
+    border-right: 1px solid #ccc;
+}
+
+.checklist {    
+    flex: 0 0 50%;
+    border-right: 1px solid #ccc;
+}
+
+.general-notes {
+    flex: 0 0 25%;
+}
+
+/* Note tabs */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.tablinks {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    flex: 1;
+    text-align: center;
+}
+
+.tablinks:hover {
+    background-color: #ddd;
+}
+
+.tablinks.active {
+    background-color: #ccc;
+}
+
+.tabcontainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.tabcontent {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+}
+
+/* Individual test cases */
+
+.test-domain {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.test-domain:hover {
+    background-color: #a9a0a0;;
+}
+
+.test-case {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    /*text-indent: 20px;*/
+}
+
+.test-case:hover {
+    background-color: #a9a0a0;
+}
+
+.selected {
+    background-color: #ccc;
+}
+
+.checklist-item {
+    margin-bottom: 15px;
+    border-bottom: 3px solid #ccc;
+}
+
+.checklist-textarea {
+    width: calc(100% - 20px);
+    min-height: 300px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    /*max-width: calc(100% - 20px);*/
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+/* instructions */
+
+.instruction {
+    margin-bottom: 5px;
+    padding: 0px;
+}
+
+pre {
+    /*background: #f4f4f4;*/
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative; /* Required for positioning the button */
+    overflow: auto;
+    margin-left: 20px;
+}
+
+.copy-button {
+    position: absolute; /* Position it relative to the pre element */
+    right: 10px; /* Adjust as needed */
+    top: 10px; /* Adjust as needed */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px; /* Adjust size */
+    height: 24px; /* Adjust size */
+    cursor: pointer;
+    display: flex; /* Center the icon */
+    justify-content: center;
+    align-items: center;
+    font-size: 14px; /* Adjust icon size */
+    line-height: 0; /* Remove extra space */
+    padding: 0; /* Remove default padding */
+}
+.copy-button:hover {
+    background-color: #0056b3;
+}
+
+/*
+.finding-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+  
+.finding-checkbox {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+  
+.finding-text {
+    font-weight: 500;
+}
+
+.finding-button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.finding-button:hover {
+    background-color: #45a049;
+}
+*/
