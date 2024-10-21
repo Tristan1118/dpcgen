@@ -4,7 +4,8 @@ const loadTestCaseData = async () => {
 
   // List of your JSON file names
   const fileNames = [
-    'testcases/fileupload.json'
+    'testcases/fileupload.json',
+    'testcases/owasp10.json'
     // Add more filenames as needed
   ];
 

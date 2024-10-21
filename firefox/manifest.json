@@ -3,7 +3,7 @@
   "name": "DPCGen",
   "version": "1.0",
   "permissions": [
-    "tabs", "storage"
+    "tabs", "storage", "activeTab"
   ],
   "background": {
     "scripts": ["background.js"]
@@ -13,6 +13,13 @@
   },
   "web_accessible_resources": [
     "window.html",
-    "testcases/*"
-  ]
+    "testcases/*",
+    "checklist.html"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["checklist.js"]
+    }
+ ]
 }

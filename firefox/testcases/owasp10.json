@@ -1,0 +1,139 @@
+{
+    "Injection": {
+        "title": "Injection",
+        "tasks": [
+            {
+                "title": "Test SQL Injection",
+                "instructions": [
+                    "' OR '1'='1"
+                ]
+            },
+            {
+                "title": "Test Command Injection",
+                "instructions": [
+                    "; ls"
+                ]
+            }
+        ]
+    },
+    "Broken Authentication": {
+        "title": "Broken Authentication",
+        "tasks": [
+            {
+                "title": "Test Default Credentials",
+                "instructions": [
+                    "admin:admin"
+                ]
+            },
+            {
+                "title": "Test Weak Password",
+                "instructions": [
+                    "password123"
+                ]
+            }
+        ]
+    },
+    "Sensitive Data Exposure": {
+        "title": "Sensitive Data Exposure",
+        "tasks": [
+            {
+                "title": "Test for HTTP instead of HTTPS"
+            },
+            {
+                "title": "Test Weak Encryption",
+                "instructions": [
+                    "openssl s_client -connect example.com:443"
+                ]
+            }
+        ]
+    },
+    "XML External Entities (XXE)": {
+        "title": "XML External Entities (XXE)",
+        "tasks": [
+            {
+                "title": "Test XXE Payload",
+                "instructions": [
+                    "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]><root>&xxe;</root>"
+                ]
+            }
+        ]
+    },
+    "Broken Access Control": {
+        "title": "Broken Access Control",
+        "tasks": [
+            {
+                "title": "Test IDOR",
+                "instructions": [
+                    "/users/1 to /users/2"
+                ]
+            },
+            {
+                "title": "Test Admin Panel Access"
+            }
+        ]
+    },
+    "Security Misconfiguration": {
+        "title": "Security Misconfiguration",
+        "tasks": [
+            {
+                "title": "Test Directory Listing",
+                "instructions": [
+                    "/path/"
+                ]
+            },
+            {
+                "title": "Test Exposed Config Files"
+            }
+        ]
+    },
+    "Cross-Site Scripting (XSS)": {
+        "title": "Cross-Site Scripting (XSS)",
+        "tasks": [
+            {
+                "title": "Test Reflected XSS",
+                "instructions": [
+                    "<script>alert(1)</script>"
+                ]
+            },
+            {
+                "title": "Test Stored XSS"
+            }
+        ]
+    },
+    "Insecure Deserialization": {
+        "title": "Insecure Deserialization",
+        "tasks": [
+            {
+                "title": "Test Deserialization Attack",
+                "instructions": [
+                    "java -jar ysoserial.jar"
+                ]
+            }
+        ]
+    },
+    "Using Components with Known Vulnerabilities": {
+        "title": "Using Components with Known Vulnerabilities",
+        "tasks": [
+            {
+                "title": "Test Vulnerable Library",
+                "instructions": [
+                    "npm audit"
+                ]
+            }
+        ]
+    },
+    "Insufficient Logging and Monitoring": {
+        "title": "Insufficient Logging and Monitoring",
+        "tasks": [
+            {
+                "title": "Check Log Availability"
+            },
+            {
+                "title": "Test Log Injection",
+                "instructions": [
+                    "' OR '1'='1"
+                ]
+            }
+        ]
+    }
+}
