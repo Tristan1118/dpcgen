@@ -1,74 +1,253 @@
 {
-    "Injection": {
-        "title": "Injection",
-        "tasks": [
-            {
-                "title": "Test SQL Injection",
-                "instructions": [
-                    "' OR '1'='1"
-                ]
-            },
-            {
-                "title": "Test Command Injection",
-                "instructions": [
-                    "; ls"
-                ]
-            }
-        ]
-    },
-    "Broken Authentication": {
-        "title": "Broken Authentication",
-        "tasks": [
-            {
-                "title": "Test Default Credentials",
-                "instructions": [
-                    "admin:admin"
-                ]
-            },
-            {
-                "title": "Test Weak Password",
-                "instructions": [
-                    "password123"
-                ]
-            }
-        ]
-    },
-    "Sensitive Data Exposure": {
-        "title": "Sensitive Data Exposure",
-        "tasks": [
-            {
-                "title": "Test for HTTP instead of HTTPS"
-            },
-            {
-                "title": "Test Weak Encryption",
-                "instructions": [
-                    "openssl s_client -connect example.com:443"
-                ]
-            }
-        ]
-    },
-    "XML External Entities (XXE)": {
-        "title": "XML External Entities (XXE)",
-        "tasks": [
-            {
-                "title": "Test XXE Payload",
-                "instructions": [
-                    "<?xml version=\"1.0\"?><!DOCTYPE root [<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]><root>&xxe;</root>"
-                ]
-            }
-        ]
-    },
     "Broken Access Control": {
         "title": "Broken Access Control",
         "tasks": [
             {
-                "title": "Test IDOR",
-                "instructions": [
-                    "/users/1 to /users/2"
-                ]
+                "title": "Test unauthorized access to admin pages",
+                "instructions": []
             },
             {
-                "title": "Test Admin Panel Access"
+                "title": "Bypass access control using parameter tampering",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to access restricted API endpoints without authorization",
+                "instructions": []
+            },
+            {
+                "title": "Check if lower privilege users can access higher privilege user data",
+                "instructions": []
+            },
+            {
+                "title": "Test direct object reference (IDOR) vulnerabilities",
+                "instructions": []
+            },
+            {
+                "title": "Bypass role-based access controls via direct URL access",
+                "instructions": []
+            },
+            {
+                "title": "Attempt privilege escalation through user role manipulation",
+                "instructions": []
+            },
+            {
+                "title": "Test if users can edit or delete other users' content",
+                "instructions": []
+            },
+            {
+                "title": "Verify if access control is enforced on both server-side and client-side",
+                "instructions": []
+            },
+            {
+                "title": "Test multi-step processes (e.g., checkout) for access control flaws",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to access non-public resources via old session tokens",
+                "instructions": []
+            },
+            {
+                "title": "Test whether API endpoints enforce proper permissions checks",
+                "instructions": []
+            },
+            {
+                "title": "Attempt access to admin functionalities by altering cookie/session data",
+                "instructions": []
+            },
+            {
+                "title": "Check if APIs expose sensitive data to unauthorized users",
+                "instructions": []
+            },
+            {
+                "title": "Test weak session management allowing user switching",
+                "instructions": []
+            }
+        ]
+    },
+    "Cryptographic Failures": {
+        "title": "Cryptographic Failures",
+        "tasks": [
+            {
+                "title": "Identify if sensitive data (passwords, credit cards) is transmitted over HTTP",
+                "instructions": []
+            },
+            {
+                "title": "Test if SSL/TLS is properly configured (e.g., no weak ciphers)",
+                "instructions": []
+            },
+            {
+                "title": "Check for use of weak cryptographic algorithms (MD5, SHA-1)",
+                "instructions": []
+            },
+            {
+                "title": "Test if passwords are stored in plain text",
+                "instructions": []
+            },
+            {
+                "title": "Check for lack of encryption on sensitive data in transit and at rest",
+                "instructions": []
+            },
+            {
+                "title": "Verify secure key management practices",
+                "instructions": []
+            },
+            {
+                "title": "Check if encryption keys are hardcoded in the source code",
+                "instructions": []
+            },
+            {
+                "title": "Test for use of outdated or broken cryptographic libraries",
+                "instructions": []
+            },
+            {
+                "title": "Ensure proper handling of encryption keys and certificates",
+                "instructions": []
+            },
+            {
+                "title": "Test for missing or improper digital signatures",
+                "instructions": []
+            },
+            {
+                "title": "Verify the strength of key derivation functions for password storage (e.g., bcrypt, PBKDF2)",
+                "instructions": []
+            },
+            {
+                "title": "Check if cryptographic libraries are up-to-date",
+                "instructions": []
+            },
+            {
+                "title": "Identify exposure of private cryptographic keys in public repositories",
+                "instructions": []
+            },
+            {
+                "title": "Test whether session cookies are marked as secure and HttpOnly",
+                "instructions": []
+            }
+        ]
+    },
+    "Injection": {
+        "title": "Injection",
+        "tasks": [
+            {
+                "title": "Test for SQL injection vulnerabilities in all input fields",
+                "instructions": []
+            },
+            {
+                "title": "Attempt command injection through unsanitized user input",
+                "instructions": []
+            },
+            {
+                "title": "Check for OS command injection vulnerabilities in file upload functions",
+                "instructions": []
+            },
+            {
+                "title": "Test for LDAP injection by manipulating user input",
+                "instructions": []
+            },
+            {
+                "title": "Attempt NoSQL injection in applications using MongoDB",
+                "instructions": []
+            },
+            {
+                "title": "Perform XXE injection attacks by submitting malicious XML data",
+                "instructions": []
+            },
+            {
+                "title": "Test for blind SQL injection using timing or error-based techniques",
+                "instructions": []
+            },
+            {
+                "title": "Check for XPath injection in XML processing applications",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to execute arbitrary code via input fields (e.g., eval() function)",
+                "instructions": []
+            },
+            {
+                "title": "Test if input validation filters can be bypassed with special characters",
+                "instructions": []
+            },
+            {
+                "title": "Test for stored and reflected cross-site scripting (XSS) vulnerabilities",
+                "instructions": []
+            },
+            {
+                "title": "Inject malicious payloads in headers (Host, Referer) to test for header injections",
+                "instructions": []
+            },
+            {
+                "title": "Check for SQL injection in hidden fields or form parameters",
+                "instructions": []
+            },
+            {
+                "title": "Test for injection vulnerabilities in API calls, especially GraphQL",
+                "instructions": []
+            },
+            {
+                "title": "Try injecting commands into JSON body parameters",
+                "instructions": []
+            }
+        ]
+    },
+    "Insecure Design": {
+        "title": "Insecure Design",
+        "tasks": [
+            {
+                "title": "Review architecture for weak authentication mechanisms",
+                "instructions": []
+            },
+            {
+                "title": "Identify lack of data validation at both client and server levels",
+                "instructions": []
+            },
+            {
+                "title": "Test for incomplete session management lifecycle (e.g., missing logout)",
+                "instructions": []
+            },
+            {
+                "title": "Check for insecure default settings in application setup",
+                "instructions": []
+            },
+            {
+                "title": "Identify flaws in authorization design (e.g., hardcoding roles)",
+                "instructions": []
+            },
+            {
+                "title": "Test if sensitive actions are insufficiently protected (e.g., weak CAPTCHA)",
+                "instructions": []
+            },
+            {
+                "title": "Check for use of outdated libraries or deprecated technologies",
+                "instructions": []
+            },
+            {
+                "title": "Test for a lack of rate limiting on login and signup forms",
+                "instructions": []
+            },
+            {
+                "title": "Identify missing security design patterns in code (e.g., lack of input sanitization)",
+                "instructions": []
+            },
+            {
+                "title": "Check if sensitive business logic is exposed to client-side users",
+                "instructions": []
+            },
+            {
+                "title": "Test whether error messages leak sensitive information (e.g., stack traces)",
+                "instructions": []
+            },
+            {
+                "title": "Identify weak password policies (e.g., allowing short passwords)",
+                "instructions": []
+            },
+            {
+                "title": "Review the design for missing fail-safes in case of attack",
+                "instructions": []
+            },
+            {
+                "title": "Test for lack of two-factor authentication on sensitive actions",
+                "instructions": []
             }
         ]
     },
@@ -76,63 +255,505 @@
         "title": "Security Misconfiguration",
         "tasks": [
             {
-                "title": "Test Directory Listing",
-                "instructions": [
-                    "/path/"
-                ]
+                "title": "Test if the server software has default credentials enabled",
+                "instructions": []
             },
             {
-                "title": "Test Exposed Config Files"
-            }
-        ]
-    },
-    "Cross-Site Scripting (XSS)": {
-        "title": "Cross-Site Scripting (XSS)",
-        "tasks": [
-            {
-                "title": "Test Reflected XSS",
-                "instructions": [
-                    "<script>alert(1)</script>"
-                ]
+                "title": "Identify outdated or vulnerable software versions",
+                "instructions": []
             },
             {
-                "title": "Test Stored XSS"
-            }
-        ]
-    },
-    "Insecure Deserialization": {
-        "title": "Insecure Deserialization",
-        "tasks": [
-            {
-                "title": "Test Deserialization Attack",
-                "instructions": [
-                    "java -jar ysoserial.jar"
-                ]
-            }
-        ]
-    },
-    "Using Components with Known Vulnerabilities": {
-        "title": "Using Components with Known Vulnerabilities",
-        "tasks": [
-            {
-                "title": "Test Vulnerable Library",
-                "instructions": [
-                    "npm audit"
-                ]
-            }
-        ]
-    },
-    "Insufficient Logging and Monitoring": {
-        "title": "Insufficient Logging and Monitoring",
-        "tasks": [
-            {
-                "title": "Check Log Availability"
+                "title": "Test if unnecessary services are running on the server",
+                "instructions": []
             },
             {
-                "title": "Test Log Injection",
-                "instructions": [
-                    "' OR '1'='1"
-                ]
+                "title": "Check for overly permissive file permissions on the server",
+                "instructions": []
+            },
+            {
+                "title": "Test if error messages expose sensitive server information",
+                "instructions": []
+            },
+            {
+                "title": "Check for insecure headers (e.g., missing Content-Security-Policy)",
+                "instructions": []
+            },
+            {
+                "title": "Verify if debug mode is enabled in the production environment",
+                "instructions": []
+            },
+            {
+                "title": "Test for open ports that shouldn't be publicly accessible",
+                "instructions": []
+            },
+            {
+                "title": "Check if sensitive directories (e.g., /admin, /backup) are publicly accessible",
+                "instructions": []
+            },
+            {
+                "title": "Identify directory listing enabled on web server",
+                "instructions": []
+            },
+            {
+                "title": "Test if default configurations (e.g., WordPress, CMS systems) are hardened",
+                "instructions": []
+            },
+            {
+                "title": "Check for improper security group configurations in cloud environments",
+                "instructions": []
+            },
+            {
+                "title": "Review application-level misconfigurations (e.g., verbose logging in production)",
+                "instructions": []
+            },
+            {
+                "title": "Test for weak security settings in the database configuration",
+                "instructions": []
+            },
+            {
+                "title": "Test for missing or misconfigured CSP, CORS, HSTS headers",
+                "instructions": []
+            }
+        ]
+    },
+    "Vulnerable and Outdated Components": {
+        "title": "Vulnerable and Outdated Components",
+        "tasks": [
+            {
+                "title": "Identify all third-party libraries used by the application",
+                "instructions": []
+            },
+            {
+                "title": "Check for outdated software versions (web server, database, etc.)",
+                "instructions": []
+            },
+            {
+                "title": "Scan dependencies for known vulnerabilities (e.g., using OWASP Dependency-Check)",
+                "instructions": []
+            },
+            {
+                "title": "Test for vulnerabilities in outdated frameworks (e.g., old versions of Django, Laravel, etc.)",
+                "instructions": []
+            },
+            {
+                "title": "Identify vulnerabilities in front-end libraries (e.g., jQuery, Bootstrap)",
+                "instructions": []
+            },
+            {
+                "title": "Check for missing security patches in software components",
+                "instructions": []
+            },
+            {
+                "title": "Test for the use of vulnerable versions of open-source libraries (e.g., Log4j)",
+                "instructions": []
+            },
+            {
+                "title": "Check for unmaintained or deprecated libraries in the codebase",
+                "instructions": []
+            },
+            {
+                "title": "Scan the application for outdated versions of CMS systems (e.g., WordPress, Joomla)",
+                "instructions": []
+            },
+            {
+                "title": "Verify if the application uses vulnerable plugins or extensions",
+                "instructions": []
+            },
+            {
+                "title": "Test for outdated versions of operating systems or middleware (e.g., Apache, Tomcat)",
+                "instructions": []
+            },
+            {
+                "title": "Check if outdated or vulnerable database systems are being used (e.g., MySQL, MongoDB)",
+                "instructions": []
+            },
+            {
+                "title": "Test for missing security updates in cloud services (e.g., outdated AMIs)",
+                "instructions": []
+            },
+            {
+                "title": "Identify vulnerable APIs provided by third-party services",
+                "instructions": []
+            },
+            {
+                "title": "Check for weak configurations in outdated components (e.g., weak SSL/TLS settings)",
+                "instructions": []
+            },
+            {
+                "title": "Verify if the application has automatic dependency updates enabled",
+                "instructions": []
+            },
+            {
+                "title": "Check for outdated JavaScript packages in the front-end (e.g., NPM or Yarn audit)",
+                "instructions": []
+            },
+            {
+                "title": "Test for vulnerabilities in outdated mobile app components (e.g., Android or iOS libraries)",
+                "instructions": []
+            },
+            {
+                "title": "Review server-side libraries for known security flaws",
+                "instructions": []
+            },
+            {
+                "title": "Test if the package manager configuration (e.g., requirements.txt, package.json) specifies insecure versions",
+                "instructions": []
+            },
+            {
+                "title": "Check if the application uses unsupported or end-of-life software versions",
+                "instructions": []
+            },
+            {
+                "title": "Identify vulnerabilities related to outdated content delivery networks (CDN) services",
+                "instructions": []
+            },
+            {
+                "title": "Test if deprecated APIs are still being used by the application",
+                "instructions": []
+            },
+            {
+                "title": "Check for vulnerable Docker base images or containerized environments",
+                "instructions": []
+            },
+            {
+                "title": "Scan container images for vulnerable or outdated software packages",
+                "instructions": []
+            },
+            {
+                "title": "Test if the code repository includes vulnerable or outdated versions of libraries",
+                "instructions": []
+            },
+            {
+                "title": "Identify if third-party libraries are loaded via CDN without integrity checks (e.g., missing SRI in HTML)",
+                "instructions": []
+            },
+            {
+                "title": "Test if libraries with known vulnerabilities are minified or obfuscated to hide their presence",
+                "instructions": []
+            },
+            {
+                "title": "Check for manual updates to components instead of using package managers",
+                "instructions": []
+            },
+            {
+                "title": "Verify if external libraries (e.g., Python, Ruby gems) are pinned to secure versions",
+                "instructions": []
+            },
+            {
+                "title": "Identify vulnerabilities in third-party integrations (e.g., payment gateways, OAuth providers)",
+                "instructions": []
+            },
+            {
+                "title": "Test for usage of vulnerable browser plugins in client-side applications",
+                "instructions": []
+            },
+            {
+                "title": "Review changelogs of third-party libraries for known security patches that are missing",
+                "instructions": []
+            },
+            {
+                "title": "Check if the application exposes vulnerable versions of SSL/TLS libraries (e.g., OpenSSL)",
+                "instructions": []
+            },
+            {
+                "title": "Test for default settings in outdated components that could lead to security flaws",
+                "instructions": []
+            },
+            {
+                "title": "Verify if components have a clear upgrade path and are actively maintained by their developers",
+                "instructions": []
+            },
+            {
+                "title": "Test if the application runs on outdated container orchestration platforms (e.g., Kubernetes)",
+                "instructions": []
+            },
+            {
+                "title": "Check for weak configurations due to outdated versions of WAF (Web Application Firewalls)",
+                "instructions": []
+            },
+            {
+                "title": "Verify that API dependencies are up to date and free of known vulnerabilities",
+                "instructions": []
+            },
+            {
+                "title": "Review the update strategy for third-party components to ensure regular updates",
+                "instructions": []
+            },
+            {
+                "title": "Test for vulnerabilities in outdated media processing libraries (e.g., ImageMagick)",
+                "instructions": []
+            },
+            {
+                "title": "Check for vulnerabilities in outdated message brokers (e.g., RabbitMQ, Kafka)",
+                "instructions": []
+            },
+            {
+                "title": "Test for insecure defaults in legacy components still in use",
+                "instructions": []
+            },
+            {
+                "title": "Verify if cryptographic libraries or modules used by the application are up to date",
+                "instructions": []
+            },
+            {
+                "title": "Test if mobile app dependencies (e.g., Cordova, React Native) are outdated and vulnerable",
+                "instructions": []
+            }
+        ]
+    },
+    "Identification and Authentication Failures": {
+        "title": "Identification and Authentication Failures",
+        "tasks": [
+            {
+                "title": "Test if weak passwords are accepted",
+                "instructions": []
+            },
+            {
+                "title": "Check for lack of multi-factor authentication (MFA) on login",
+                "instructions": []
+            },
+            {
+                "title": "Test for improper session management (e.g., session fixation)",
+                "instructions": []
+            },
+            {
+                "title": "Check if sessions are not properly invalidated after logout",
+                "instructions": []
+            },
+            {
+                "title": "Test for default user credentials (e.g., admin:admin",
+                "instructions": []
+            },
+            {
+                "title": "Check if sensitive operations are protected by password re-authentication",
+                "instructions": []
+            },
+            {
+                "title": "Test for insufficient password reset mechanisms (e.g., predictable tokens)",
+                "instructions": []
+            },
+            {
+                "title": "Test if brute-force protection is implemented on login pages",
+                "instructions": []
+            },
+            {
+                "title": "Verify whether password complexity requirements are enforced",
+                "instructions": []
+            },
+            {
+                "title": "Check if session cookies are marked as secure and HttpOnly",
+                "instructions": []
+            },
+            {
+                "title": "Test for token reuse vulnerabilities (e.g., JWT replay attacks)",
+                "instructions": []
+            },
+            {
+                "title": "Test if password storage uses weak or no hashing algorithms",
+                "instructions": []
+            },
+            {
+                "title": "Check if user enumeration is possible via login/registration pages",
+                "instructions": []
+            },
+            {
+                "title": "Test for lack of CAPTCHA on signup or login pages",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to bypass authentication mechanisms (e.g., via cookie manipulation)",
+                "instructions": []
+            }
+        ]
+    },
+    "Software and Data Integrity Failures": {
+        "title": "Software and Data Integrity Failures",
+        "tasks": [
+            {
+                "title": "Test for unsigned or unverified software updates",
+                "instructions": []
+            },
+            {
+                "title": "Check for use of third-party dependencies with known vulnerabilities",
+                "instructions": []
+            },
+            {
+                "title": "Test for missing integrity checks on downloaded files",
+                "instructions": []
+            },
+            {
+                "title": "Verify if important data is stored securely and tamper-proof",
+                "instructions": []
+            },
+            {
+                "title": "Test for the use of insecure or outdated dependencies in package management",
+                "instructions": []
+            },
+            {
+                "title": "Check for potential code injection in CI/CD pipelines",
+                "instructions": []
+            },
+            {
+                "title": "Test if integrity verification mechanisms are in place for sensitive data",
+                "instructions": []
+            },
+            {
+                "title": "Identify missing checks for tampered user input",
+                "instructions": []
+            },
+            {
+                "title": "Test for vulnerabilities in automated build processes (e.g., Docker images)",
+                "instructions": []
+            },
+            {
+                "title": "Check if code deployment processes have proper integrity validation",
+                "instructions": []
+            },
+            {
+                "title": "Identify supply chain attacks by analyzing third-party services",
+                "instructions": []
+            },
+            {
+                "title": "Test for improperly protected backups or log files",
+                "instructions": []
+            },
+            {
+                "title": "Review the use of insecure or tampered external libraries",
+                "instructions": []
+            },
+            {
+                "title": "Test for unvalidated external data feeds (e.g., APIs)",
+                "instructions": []
+            }
+        ]
+    },
+    "Security Logging and Monitoring Failures": {
+        "title": "Security Logging and Monitoring Failures",
+        "tasks": [
+            {
+                "title": "Test if failed login attempts are not logged",
+                "instructions": []
+            },
+            {
+                "title": "Check for lack of logging for privilege escalation actions",
+                "instructions": []
+            },
+            {
+                "title": "Verify if sensitive actions (e.g., password change) are logged properly",
+                "instructions": []
+            },
+            {
+                "title": "Test for missing or insufficient logging for API calls",
+                "instructions": []
+            },
+            {
+                "title": "Test if security events (e.g., XSS attacks) are not captured in logs",
+                "instructions": []
+            },
+            {
+                "title": "Check if logging data is stored insecurely (e.g., in plain text)",
+                "instructions": []
+            },
+            {
+                "title": "Verify if the application logs sensitive data like passwords or tokens",
+                "instructions": []
+            },
+            {
+                "title": "Check for missing real-time monitoring for security events",
+                "instructions": []
+            },
+            {
+                "title": "Test if logging is missing or improperly configured for key services",
+                "instructions": []
+            },
+            {
+                "title": "Check for proper alerting mechanisms for critical security events",
+                "instructions": []
+            },
+            {
+                "title": "Test if log files can be tampered with or deleted by users",
+                "instructions": []
+            },
+            {
+                "title": "Check if log retention policies are implemented correctly",
+                "instructions": []
+            },
+            {
+                "title": "Test if log data is accessible only to authorized users",
+                "instructions": []
+            },
+            {
+                "title": "Verify if log aggregation systems are in place for centralized monitoring",
+                "instructions": []
+            },
+            {
+                "title": "Check if monitoring systems can detect anomalies in application behavior",
+                "instructions": []
+            }
+        ]
+    },
+    "Server-Side Request Forgery (SSRF)": {
+        "title": "Server-Side Request Forgery (SSRF)",
+        "tasks": [
+            {
+                "title": "Test if external URLs can be fetched by the server via user input",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to access internal resources via SSRF (e.g., /admin endpoints)",
+                "instructions": []
+            },
+            {
+                "title": "Test if webhooks or callbacks can be exploited for SSRF",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to access cloud metadata services via SSRF",
+                "instructions": []
+            },
+            {
+                "title": "Check for blind SSRF vulnerabilities by timing responses",
+                "instructions": []
+            },
+            {
+                "title": "Test if SSRF can be used to access sensitive internal APIs",
+                "instructions": []
+            },
+            {
+                "title": "Attempt DNS rebinding attacks through SSRF endpoints",
+                "instructions": []
+            },
+            {
+                "title": "Test if internal network scanning can be performed via SSRF",
+                "instructions": []
+            },
+            {
+                "title": "Check if SSRF can bypass firewalls or IP restrictions",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to exfiltrate internal data via SSRF (e.g., /proc files)",
+                "instructions": []
+            },
+            {
+                "title": "Test if image upload or preview functionality can be abused for SSRF",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to leverage SSRF for remote code execution (RCE)",
+                "instructions": []
+            },
+            {
+                "title": "Check for SSRF vulnerabilities in third-party integrations",
+                "instructions": []
+            },
+            {
+                "title": "Test for SSRF attacks using URL shorteners or redirects",
+                "instructions": []
+            },
+            {
+                "title": "Attempt to access local file systems via SSRF with file:// protocol",
+                "instructions": []
             }
         ]
     }
