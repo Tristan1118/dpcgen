@@ -12,16 +12,35 @@ const readAllProgramData = () => {
 };
   
 const writeAllProgramData = (allProgramData) => {
-browser.storage.local.set({allProgramData});
+    browser.storage.local.set({allProgramData});
+}
+
+function modifyProgramData(keysArray, value) {
+    readAllProgramData().then((allProgramData) => {
+        let current = allProgramData;
+
+        // Traverse through the keys except the last one
+        for (let i = 0; i < keysArray.length - 1; i++) {
+            current = current[keysArray[i]];
+        }
+
+        // Update the last key with the new value
+        current[keysArray[keysArray.length - 1]] = value;
+
+        writeAllProgramData(allProgramData);
+
+    })
 }
 
 function debounceNotes(func) {
+    // currently not in use. Could be added for performance
+    return func;
     let debounceTimer;
     return function() {
         const context = this;
         const args = arguments;
         clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => func.apply(context, args), 200);
+        debounceTimer = setTimeout(() => func.apply(context, args), 10);
     };
 }
 
@@ -71,16 +90,11 @@ function selectProgram() {
 
 function populateProgramNotes(programName) {
     readAllProgramData().then((allProgramData) => {
-        eventListener = function() {
-            allProgramData[programName]["notes"] = this.value;
-            writeAllProgramData(allProgramData);
-        };
         const noteSection = document.getElementById('notes-programNotes');
         const newNoteSection = noteSection.cloneNode(true);
         newNoteSection.value = allProgramData[programName]["notes"];;
         newNoteSection.addEventListener('input', debounceNotes(function() {
-            allProgramData[programName]["notes"] = this.value;
-            writeAllProgramData(allProgramData);
+            modifyProgramData([programName, "notes"], this.value);
         }));
         document.getElementById('notes-programNotes').parentNode.replaceChild(newNoteSection, noteSection);
         document.getElementById('program-tablink').innerHTML = programName;
@@ -91,31 +105,16 @@ function populateProgramNotes(programName) {
 function populateDomainNotes(programName, domain) {
     console.log("populating notes for " + domain);
     readAllProgramData().then((allProgramData) => {
-        eventListener = function() {
-            allProgramData[programName]["domains"][domain]["notes"] = this.value;
-            writeAllProgramData(allProgramData);
-        };
         const noteSection = document.getElementById('notes-domainNotes');
         const newNoteSection = noteSection.cloneNode(true);
         newNoteSection.value = allProgramData[programName]["domains"][domain]["notes"];;
         newNoteSection.addEventListener('input', debounceNotes(function() {
-            allProgramData[programName]["domains"][domain]["notes"] = this.value;
-            writeAllProgramData(allProgramData);
+            console.log("Updating notes for " + domain);
+            modifyProgramData([programName, "domains", domain, "notes"], this.value);
         }));
         document.getElementById('notes-domainNotes').parentNode.replaceChild(newNoteSection, noteSection);
         document.getElementById('domain-tablink').innerHTML = domain;
     });
-}
-
-function populateGeneralNotes(noteTitle, notes, eventListener) {
-    // update title
-    document.getElementById('notesTitle').innerText = `${noteTitle} Notes`;
-    // replace old note section with new one to destroy all old event listeners
-    const noteSection = document.getElementById('generalNotes');
-    const newNoteSection = noteSection.cloneNode(true);
-    newNoteSection.addEventListener('input', debounceNotes(eventListener));
-    newNoteSection.value = notes;
-    document.getElementById('generalNotes').parentNode.replaceChild(newNoteSection, noteSection);
 }
 
 // returns a unique identifier for a domain that can be used as HTML class
@@ -188,8 +187,7 @@ function selectTestCase(programName, domain, testCaseId) { readAllProgramData().
     </div>`;
 
     document.getElementById(`notes-${testCaseId}`).addEventListener('input', debounceNotes(function() {
-        allProgramData[programName]["domains"][domain]["testcases"][testCaseId]["notes"] = this.value;
-        writeAllProgramData(allProgramData);
+        modifyProgramData([programName, "domains", domain, "testcases", testCaseId, "notes"], this.value);
     }));
 
     // Add the individual tasks
@@ -244,8 +242,7 @@ function selectTestCase(programName, domain, testCaseId) { readAllProgramData().
 function closureUpdateStatusHandler(programName, domain, testCaseId, taskId) { 
     return function() {
         readAllProgramData().then((allProgramData) => {
-            allProgramData[programName]["domains"][domain]["testcases"][testCaseId]["tasks"][taskId]["done"] = this.checked;
-            writeAllProgramData(allProgramData);
+            modifyProgramData([programName, "domains", domain, "testcases", testCaseId, "tasks", taskId, "done"], this.checked);
         });
     }
 }
@@ -254,8 +251,7 @@ function closureUpdateStatusHandler(programName, domain, testCaseId, taskId) {
 function closureUpdateNotesHandler(programName, domain, testCaseId, taskId) {
     return function() {
         readAllProgramData().then((allProgramData) => {
-            allProgramData[programName]["domains"][domain]["testcases"][testCaseId]["tasks"][taskId]["notes"] = this.value;
-            writeAllProgramData(allProgramData);
+            modifyProgramData([programName, "domains", domain, "testcases", testCaseId, "tasks", taskId, "notes"], this.value);
         });
     }
 }
@@ -271,8 +267,7 @@ function closureSelectTestCaseHandler(programName, domain, testCaseId) {
 function closureUpdateTestCaseDoneHandler(programName, domain, testCaseId) {
     return function() {
         readAllProgramData().then((allProgramData) => {
-            allProgramData[programName]["domains"][domain]["testcases"][testCaseId]["done"] = this.checked;
-            writeAllProgramData(allProgramData);
+            modifyProgramData([programName, "domains", domain, "testcases", testCaseId, "done"], this.checked);
         });
     }
 }
@@ -287,6 +282,7 @@ function importProject(jsonData) {
         else {
             allProgramData[programName] = jsonData[programName];
             writeAllProgramData(allProgramData);
+            location.reload();
         }
     })
 }
