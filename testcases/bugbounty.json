@@ -1,0 +1,282 @@
+{
+    "IDOR": {
+        "title": "IDOR",
+        "tasks": [
+            {
+                "title": "Setup users",
+                "instructions": []
+            },
+            {
+                "title": "What are the objects?",
+                "instructions": []
+            },
+            {
+                "title": "What are the actions?",
+                "instructions": []
+            },
+            {
+                "title": "Test for IDOR on every action",
+                "instructions": []
+            }
+        ]
+    },
+    "Session management (Cookie)": {
+        "title": "Session management (Cookie)",
+        "tasks": [
+            {
+                "title": "What are the session cookies?",
+                "instructions": []
+            },
+            {
+                "title": "Research (Framework, Construction)",
+                "instructions": []
+            },
+            {
+                "title": "Decoding",
+                "instructions": []
+            }
+        ]
+    },
+    "Session Management (JWT)": {
+        "title": "Session Management (JWT)",
+        "tasks": [
+            {
+                "title": "Common attacks",
+                "instructions": [
+                    "jwttool.py"
+                ]
+            },
+            {
+                "title": "Manual inspection and research",
+                "instructions": []
+            }
+        ]
+    },
+    "Session Management (General)": {
+        "title": "Session Management (General)",
+        "tasks": [
+            {
+                "title": "Logout invalidation",
+                "instructions": []
+            }
+        ]
+    },
+    "MFA": {
+        "title": "MFA",
+        "tasks": [
+            {
+                "title": "Research MFA Registration",
+                "instructions": []
+            },
+            {
+                "title": "MFA Bypass",
+                "instructions": []
+            }
+        ]
+    },
+    "Role segmentation": {
+        "title": "Role segmentation",
+        "tasks": [
+            {
+                "title": "What are the roles?",
+                "instructions": []
+            },
+            {
+                "title": "Set up accounts for each role",
+                "instructions": []
+            },
+            {
+                "title": "What are the actions for each role?",
+                "instructions": []
+            },
+            {
+                "title": "Test for bypassing role limitations",
+                "instructions": []
+            }
+        ]
+    },
+    "Registration": {
+        "title": "Registration",
+        "tasks": [
+            {
+                "title": "Register same email twice",
+                "instructions": []
+            },
+            {
+                "title": "Mass assignment: Interesting fields?",
+                "instructions": []
+            },
+            {
+                "title": "Mass assignment tests",
+                "instructions": []
+            }
+        ]
+    },
+    "Password reset": {
+        "title": "Password reset",
+        "tasks": [
+            {
+                "title": "Send it to other email?",
+                "instructions": []
+            },
+            {
+                "title": "Predict reset token?",
+                "instructions": []
+            }
+        ]
+    },
+    "Profile update": {
+        "title": "Profile update",
+        "tasks": [
+            {
+                "title": "Change email to that of other user",
+                "instructions": []
+            },
+            {
+                "title": "Mass assignment: Interesting fields?",
+                "instructions": []
+            },
+            {
+                "title": "Mass assignment tests",
+                "instructions": []
+            }
+        ]
+    },
+    "Oauth": {
+        "title": "Oauth",
+        "tasks": [
+            {
+                "title": "Modify redirect URL to collaborator",
+                "instructions": []
+            },
+            {
+                "title": "Modify redirect URL to subdomain",
+                "instructions": []
+            },
+            {
+                "title": "Modify redirect URL to parent domain",
+                "instructions": []
+            }
+        ]
+    },
+    "Enumeration": {
+        "title": "Enumeration",
+        "tasks": [
+            {
+                "title": "Subdomain discovery",
+                "instructions": []
+            },
+            {
+                "title": "Content discovery with burp",
+                "instructions": []
+            },
+            {
+                "title": "Directory enumeration: small-directory",
+                "instructions": []
+            },
+            {
+                "title": "Directory enumeration: medium-directory",
+                "instructions": []
+            },
+            {
+                "title": "Directory enumeration: medium-files",
+                "instructions": []
+            },
+            {
+                "title": "Directory enumeration: specific wordlists",
+                "instructions": []
+            },
+            {
+                "title": "Review CSP",
+                "instructions": [
+                    "https://csp-evaluator.withgoogle.com"
+                ]
+            },
+            {
+                "title": "Review CORS",
+                "instructions": []
+            }
+        ]
+    },
+    "Login": {
+        "title": "Login",
+        "tasks": [
+            {
+                "title": "Brute Force",
+                "instructions": []
+            },
+            {
+                "title": "SQL Injection",
+                "instructions": []
+            },
+            {
+                "title": "NoSQL Injection",
+                "instructions": []
+            }
+        ]
+    },
+    "Reflected parameter": {
+        "title": "Reflected parameter",
+        "tasks": [
+            {
+                "title": "HTML encoding?",
+                "instructions": []
+            },
+            {
+                "title": "Test for XSS",
+                "instructions": []
+            },
+            {
+                "title": "Template injection",
+                "instructions": []
+            }
+        ]
+    },
+    "GraphQL": {
+        "title": "GraphQL",
+        "tasks": [
+            {
+                "title": "Introspection?",
+                "instructions": [
+                    "query{__schema{types{name,fields{name}}}}",
+                    "http://graphql-kit.com/graphql-voyager/"
+                ]
+            }
+        ]
+    },
+    "Network Configuration (Non-Cloud)": {
+        "title":"Network Configuration (Non-Cloud)",
+        "tasks": [
+            {
+                "title": "Port scan",
+                "instructions": [
+                    "sudo nmap -vv --top-ports=100 -sV -oN tcp100.nmap",
+                    "sudo nmap -vv --top-ports=1000 -sV -oN tcp1000.nmap",
+                    "sudo nmap -vv -p- -sV -oN alltcp.nmap"
+                ]
+            },
+            {
+                "title": "Host header manipulation",
+                "instructions": []
+            },
+            {
+                "title": "HTTP request smuggling",
+                "instructions": []
+            },
+            {
+                "title": "Hop-By-Hop Headers",
+                "instructions": [
+                    "Connection: close, Cookie",
+                    "X-Forwarded-For: localhost",
+                    "X-Forwarded-For: 127.0.0.1",
+                    "X-Forwarded-Host: localhost",
+                    "X-Forwarded-Host: 127.0.0.1",
+                    "X-Real-IP: 127.0.0.1",
+                    "X-Original-URL: /admin",
+                    "X-Rewrite-URL: /admin",
+                    "Proxy-Authorization: Basic YWRtaW46cGFzc3dvcmQ="
+                ]
+            }
+        ]
+    }
+}
